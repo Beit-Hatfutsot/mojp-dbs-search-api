@@ -92,4 +92,4 @@ ENV/
 
 .gitignore
 .idea/
-open-budget-search-api.iml
+mojp-dbs-search-api.iml

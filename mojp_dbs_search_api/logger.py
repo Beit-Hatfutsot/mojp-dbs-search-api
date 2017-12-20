@@ -1,7 +1,7 @@
 import sys
 import logging
 
-logger = logging.getLogger('obudget')
+logger = logging.getLogger('mojpdbs')
 handler = logging.StreamHandler(sys.stderr)
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 handler.setFormatter(formatter)

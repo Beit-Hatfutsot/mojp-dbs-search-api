@@ -19,7 +19,7 @@ def read(*paths):
 
 
 # Prepare
-PACKAGE = 'open_budget_search_api'
+PACKAGE = 'mojp_dbs_search_api'
 NAME = PACKAGE.replace('_', '-')
 INSTALL_REQUIRES = read('requirements.txt').split('\n')
 TESTS_REQUIRE = [
@@ -42,22 +42,5 @@ setup(
     extras_require={'develop': TESTS_REQUIRE},
     zip_safe=False,
     long_description=README,
-    description='{{ DESCRIPTION }}',
-    author='Adam Kariv',
-    author_email='adam@obudget.org',
-    url='https://github.com/OpenBudget/open-budget-search-api',
-    license='MIT',
-    keywords=[
-        'data',
-    ],
-    classifiers=[
-        'Development Status :: 4 - Beta',
-        'Environment :: Web Environment',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3.5',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-    ],
+    description='{{ DESCRIPTION }}'
 )

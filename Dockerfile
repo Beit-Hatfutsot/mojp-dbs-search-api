@@ -13,12 +13,12 @@ RUN apk del build-dependencies
 RUN rm -rf /var/cache/apk/*
 
 COPY [a-z_A-Z]* $APP_PATH/
-COPY open_budget_search_api/ $APP_PATH/open_budget_search_api/
+COPY mojp_dbs_search_api/ $APP_PATH/mojp_dbs_search_api/
 RUN ls -la /opt/app/
 
 USER $GUNICORN_USER
 
-ENV GUNICORN_MODULE=open_budget_search_api.main
+ENV GUNICORN_MODULE=mojp_dbs_search_api.main
 
 EXPOSE 8000
 
