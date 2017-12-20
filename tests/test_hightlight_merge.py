@@ -1,4 +1,4 @@
-from open_budget_search_api.elastic import merge_highlight_into_source
+from mojp_dbs_search_api.elastic import merge_highlight_into_source
 
 def test_highlight_merge():
 

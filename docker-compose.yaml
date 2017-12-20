@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+
+  mojp-dbs-search-api:
+    build: .
+    image: mojp-dbs-search-api
+    ports:
+      - "5000:5000"
