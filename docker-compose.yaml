@@ -6,4 +6,8 @@ services:
     build: .
     image: mojp-dbs-search-api
     ports:
-      - "5000:5000"
+      - "8000:8000"
+    environment:
+    - DPP_ELASTICSEARCH=elasticsearch:9200
+    volumes:
+    - ../mojp-dbs-pipelines/data:/opt/mojp-dbs-pipelines/data

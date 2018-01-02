@@ -1,13 +1,23 @@
 # mojp-dbs-search-api
 
 
-## Running
+## Running locally
+
+```
+pipenv install
+pipenv shell
+make install
+python3 -c 'from mojp_dbs_search_api.main import app; app.run()'
+```
+
+
+## Running using docker
 
 ```
 docker-compose up -d --build
 ```
 
-* http://localhost:18000/search/places/poland///4/0
+* http://localhost:5000/search/all/poland/_/_/4/0
 
 This is the search URL format:
 
@@ -18,11 +28,4 @@ This is the search URL format:
 
 The following environment variables are supported:
 
-* `ES_HOST` / `ES_PORT` - elasticsedarch connection details
-
-
-## Development
-
-```
-python3 -c 'from mojp_dbs_search_api.main import app; app.run()'
-```
+* `ES_HOST` / `ES_PORT` - elasticsearch connection details
