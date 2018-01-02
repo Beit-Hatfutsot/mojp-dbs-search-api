@@ -1,12 +1,13 @@
-from .config import SEARCHABLE_DATAPACKAGES, NON_SEARCHABLE_DATAPACKAGES
 from .data_source import DataSource
 
 searchable_sources = [
-    DataSource(url) for url in SEARCHABLE_DATAPACKAGES
+    DataSource("../mojp-dbs-pipelines/data/clearmash/places/datapackage.json"),
+    DataSource("../mojp-dbs-pipelines/data/clearmash/familynames/datapackage.json"),
+    DataSource("../mojp-dbs-pipelines/data/clearmash/movies/datapackage.json"),
+    DataSource("../mojp-dbs-pipelines/data/clearmash/personalities/datapackage.json"),
+    DataSource("../mojp-dbs-pipelines/data/clearmash/photounits/datapackage.json"),
 ]
-non_searchable_sources = [
-    DataSource(url) for url in NON_SEARCHABLE_DATAPACKAGES
-]
+non_searchable_sources = []
 
 
 sources = dict(

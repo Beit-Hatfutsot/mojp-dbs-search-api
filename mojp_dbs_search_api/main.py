@@ -11,14 +11,12 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/search/<string:types>/<string:search_term>/'
-           '<string:from_date>/<string:to_date>/'
-           '<string:size>/<string:offset>',
+@app.route('/search/<string:types>/<string:search_term>/<string:size>/<string:offset>',
            methods=['GET'])
-def search_handler(types, search_term, from_date, to_date, size, offset):
+def search_handler(types, search_term, size, offset):
     types_formatted = str(types).split(",")
     try:
-        result = search(types_formatted, search_term, from_date, to_date, size, offset)
+        result = search(types_formatted, search_term, size, offset)
     except Exception as e:
         logger.exception("Error searching %s for tables: %s " % (search_term, str(types)))
         result = {'error': str(e)}

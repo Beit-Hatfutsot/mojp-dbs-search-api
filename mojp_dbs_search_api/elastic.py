@@ -4,7 +4,7 @@ from .data_sources import sources
 from .config import INDEX_NAME, get_es_client
 
 
-def prepare_typed_query(type_names, term, from_date, to_date, search_size, offset):
+def prepare_typed_query(type_names, term, search_size, offset):
     search_fields = [sources[type_name].search_fields for type_name in type_names]
     search_fields = list(set().union(*search_fields))
     body = {
@@ -19,11 +19,12 @@ def prepare_typed_query(type_names, term, from_date, to_date, search_size, offse
                     }
                 },
                 "boost_mode": "multiply",
-                "script_score": {
-                    "script": {
-                        "inline": "Math.log(doc['score'].value+1)"
-                    }
-                }
+                # TODO: add score field to the entities
+                # "script_score": {
+                #     "script": {
+                #         "inline": "Math.log(doc['score'].value+1)"
+                #     }
+                # }
             }
         },
         "aggs": {
@@ -114,7 +115,7 @@ def get_document(type_name, doc_id):
         return None
 
 
-def search(types, term, from_date, to_date, size, offset):
+def search(types, term, size, offset):
     ret_val = {
         'search_counts': {},
         'search_results': [],
@@ -125,7 +126,7 @@ def search(types, term, from_date, to_date, size, offset):
     for type_name in types:
         if type_name not in sources:
             return {"message": "not a real type %s" % type_name}
-    query = prepare_typed_query(types, term, from_date, to_date, size, offset)
+    query = prepare_typed_query(types, term, size, offset)
     results = get_es_client().search(index=INDEX_NAME, doc_type=",".join(types), body=query)
     overalls = results['aggregations']['type_totals']['buckets']
     overalls = dict(
